@@ -1,0 +1,72 @@
+﻿@model DomainModels.Album
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Album</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <input asp-for="AlbumId" hidden class="form-control" />
+                <span asp-validation-for="AlbumId" class="text-danger"></span>
+            </div>
+
+            <br/>
+
+            <div class="form-group">
+
+                <select asp-for="ArtistId" asp-items="@ViewBag.Artists" class="form-select" aria-label="">
+                </select>
+
+                <span asp-validation-for="ArtistId" class="text-danger"></span>
+            </div>
+
+            <br/>
+
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            <br/>
+
+            <div class="form-group">
+                <label asp-for="ReleaseDate" class="control-label"></label>
+                <input asp-for="ReleaseDate" class="form-control" />
+                <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+            </div>
+
+            <br/>
+
+            <div class="form-group">
+                <label asp-for="RecordLabelName" class="control-label"></label>
+                <input asp-for="RecordLabelName" class="form-control" />
+                <span asp-validation-for="RecordLabelName" class="text-danger"></span>
+            </div>
+
+            <br/>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<br/>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

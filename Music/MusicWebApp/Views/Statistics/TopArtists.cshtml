@@ -1,0 +1,28 @@
+﻿@model IEnumerable<DomainModels.Artist>
+
+@{
+    ViewData["Title"] = "Top artists";
+}
+
+<h1>Top artists</h1>
+
+<br/>
+
+<table class="table table-dark table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr class="table-light">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

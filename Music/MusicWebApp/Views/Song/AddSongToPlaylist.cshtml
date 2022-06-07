@@ -1,0 +1,47 @@
+﻿@model DoamainModels.PlaylistSong
+
+@{
+    ViewData["Title"] = "Add song to playlist";
+}
+
+<h1>Add song to playlist</h1>
+
+<h4>PlaylistSong</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddSongToPlaylist">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+
+                <select asp-for="PlaylistId" asp-items="@ViewBag.Playlists" class="form-select" aria-label="">
+                    <option value="">Select playlist</option>
+                </select>
+
+                <span asp-validation-for="PlaylistId" class="text-danger"></span>
+            </div>
+
+             <br/>
+
+            <div hidden class="form-group">
+                <input asp-for="SongId" hidden value="@ViewBag.SongId" class="form-control" />
+                <span asp-validation-for="SongId" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Add" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+ <br/>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

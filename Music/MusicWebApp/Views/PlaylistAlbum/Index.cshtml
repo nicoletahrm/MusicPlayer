@@ -1,0 +1,40 @@
+﻿@model IEnumerable<DomainModels.PlaylistAlbum>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table table-dark table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PlaylistName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlbumName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr class="table-light">
+            <td>
+                @Html.DisplayFor(modelItem => item.PlaylistName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlbumName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { playlist_album_id = item.PlaylistAlbumId }, new { style="text-decoration: none;" } ) |
+                @Html.ActionLink("Delete", "Delete", new { playlist_album_id = item.PlaylistAlbumId }, new { style="text-decoration: none;" } )
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

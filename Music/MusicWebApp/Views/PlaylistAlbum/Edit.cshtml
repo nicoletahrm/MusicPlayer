@@ -1,0 +1,50 @@
+﻿@model DomainModels.PlaylistAlbum
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>PlaylistAlbum</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="PlaylistAlbumId" hidden class="form-control" />
+                <span asp-validation-for="PlaylistAlbumId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <select asp-for="PlaylistId" asp-items="@ViewBag.Playlists" class="form-select" aria-label="">
+                </select>
+                <span asp-validation-for="PlaylistId" class="text-danger"></span>
+            </div>
+
+            <br/>
+
+            <div class="form-group">
+               <select asp-for="AlbumId" asp-items="@ViewBag.Albums" class="form-select" aria-label="">
+                </select>
+                <span asp-validation-for="AlbumId" class="text-danger"></span>
+            </div>
+
+            <br/>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<br/>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
